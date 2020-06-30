@@ -1,9 +1,11 @@
 body{
-    background-color: aqua;
-    color: blueviolet;
+    background-color:whitesmoke;
+    color:black;
+    
 }
 h1{
     color: blueviolet;
+    font-style: italic;
 }
 .price{
     font-size: 2rem;
