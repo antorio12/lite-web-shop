@@ -1,7 +1,9 @@
 const express= require('express')
 const path=require('path')
 const app=express()
+const mongoose=require('mongoose')
 const exphbs=require('express-handlebars')
+
 const hbs= exphbs.create({
     defaultLayout:'main',
     extname: 'hbs'
@@ -26,8 +28,23 @@ const cardRoutes=require('./routes/card')
 app.get('/about', (request, response) =>{
     response.render('about')
 })
-const PORT=process.env.PORT || 3000
+ 
+async function start(){
+    try{
+        const urlMongo='mongodb+srv://Antorio19:<xf3AVaAgzm9ZOVJJ>@cluster0.rwaea.mongodb.net/<dbname>?retryWrites=true&w=majority'
+        await mongoose.connect(urlMongo,{useNewUrlParser: true})
+        const PORT=process.env.PORT || 3000
+    
+        app.listen(PORT, () =>{
+            console.log(`Server start at port ${PORT}`)
+        })
+    } catch(e){
+        console.log(e)
+    }
+    
+}
+start()
 
-app.listen(PORT, () =>{
-    console.log(`Server start at port ${PORT}`)
-})
+const login='Antorio19'
+const pass='xf3AVaAgzm9ZOVJJ'
+const urlMongo='mongodb+srv://Antorio19:<xf3AVaAgzm9ZOVJJ>@cluster0.rwaea.mongodb.net/<dbname>?retryWrites=true&w=majority'
