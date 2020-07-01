@@ -31,7 +31,7 @@ app.get('/about', (request, response) =>{
  
 async function start(){
     try{
-        const urlMongo='mongodb+srv://Antorio19:<xf3AVaAgzm9ZOVJJ>@cluster0.rwaea.mongodb.net/<dbname>?retryWrites=true&w=majority'
+        const urlMongo=`mongodb+srv://Antorio19:xf3AVaAgzm9ZOVJJ@cluster0.rwaea.mongodb.net/shop`
         await mongoose.connect(urlMongo,{useNewUrlParser: true})
         const PORT=process.env.PORT || 3000
     
