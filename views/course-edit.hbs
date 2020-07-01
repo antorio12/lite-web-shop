@@ -15,7 +15,11 @@
           <label for="img">URL картинки</label>
           <span class="helper-text" data-error="введите адрес картинки"></span>
         </div>
-        <input type="hidden" name="id" value='{{course.id}}'>
+        <input type="hidden" name="_id" value='{{course._id}}'>
 
         <button class="btn btn-primary">Редактировать курс</button>
 </form>
+<form action="/courses/remove" method="post">
+<input type="hidden" name="_id" value='{{course._id}}'>
+<button class="btn red delete-btn"> Delete course</button>
+</form> 
