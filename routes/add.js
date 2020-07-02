@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
     userID:req.user})
 
     try {
-      console.log(req.user)
+     
       await course.save()
       res.redirect('/courses')
     } catch (e) {
