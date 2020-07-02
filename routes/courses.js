@@ -5,7 +5,7 @@ const Course= require('../models/courses')
 
 router.get('/', async (request, response) =>{
     const allCourses=await Course.find().lean()
-    
+    console.log(allCourses)
     response.render('courses',{
         title:"Курсы",
         isCourses:true,
@@ -13,7 +13,7 @@ router.get('/', async (request, response) =>{
     })
 })
 router.get('/:_id', async (req, res) =>{
-    console.log("!!!!!!!!!!!!!!!!")
+    
     const course= await Course.findById(req.params._id).lean()
     res.render('course',{
         layout:'empty',

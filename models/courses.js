@@ -9,7 +9,11 @@ const course = new Schema({
     type: Number,
     required: true
   },
-  img: String
+  img: String,
+  userID:{
+     type:Schema.Types.ObjectId,
+     ref:'User'
+  }
 })
 
 module.exports = model('Course1', course)

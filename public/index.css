@@ -20,7 +20,7 @@ h1{
     margin-bottom: 2rem;
 }
 .course img{
-    min-width: 100%;
+    min-width:50%;
     height: auto;
 }
 .course .price.big{
@@ -36,6 +36,9 @@ h1{
 }
 .delete-btn{
     margin-top: 2rem;
+}
+.course img{
+    width: auto;
 }
 @media (max-width: 992px) {
     

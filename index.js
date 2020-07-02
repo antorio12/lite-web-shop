@@ -12,9 +12,21 @@ const homeRoutes=require('./routes/home.js')
 const addRoutes=require('./routes/add.js')
 const coursesRoutes=require('./routes/courses.js')
 const cardRoutes=require('./routes/card') 
+const User= require('./models/user')
+const { getMaxListeners } = require('./models/user')
     app.engine('hbs',hbs.engine)
     app.set('view engine', 'hbs')
     app.set('views', 'views')
+    app.use(async (req,res, next) =>{
+        try{
+            const user= await User.findById("5efca2b4061bdd17128aa9f6")
+            req.user= user
+            next()
+        } catch(e){
+            console.log(e)
+        }
+        
+    })
     app.use(express.static(path.join(__dirname,'public')))
     app.use(express.urlencoded({extended:true}))
     app.use('/', homeRoutes)
@@ -34,9 +46,20 @@ async function start(){
         const urlMongo=`mongodb+srv://Antorio19:xf3AVaAgzm9ZOVJJ@cluster0.rwaea.mongodb.net/shop`
         await mongoose.connect(urlMongo,
             {useNewUrlParser: true,
-            useFindAndModify: false }
+            useFindAndModify: false,
+            useUnifiedTopology: true }
             
             )
+        const newUser= await User.findOne() 
+        if (!newUser){
+            const user= new User({
+                email: 'google@gmail.com',
+                name: "Antorio",
+                cart:{items:[]}
+                
+            })
+            await user.save()
+        }
         const PORT=process.env.PORT || 3000
     
         app.listen(PORT, () =>{
