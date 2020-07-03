@@ -5,7 +5,7 @@ const Course= require('../models/courses')
 
 router.get('/', async (request, response) =>{
     const allCourses=await Course.find().lean()
-    console.log(allCourses)
+   
     response.render('courses',{
         title:"Курсы",
         isCourses:true,
